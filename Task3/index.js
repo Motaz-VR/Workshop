@@ -21,16 +21,19 @@ const facts = [
     "Octopuses have three hearts! 🐙"
 ];
 
-const randomize = (array) => array[Math.floor(Math.random() * array.length)];
-
-app.get("/fortunes", (req, res) => {
-    res.send(randomize(fortunes))
-})
-app.get("/jokes", (req, res) => {
-    res.send(randomize(jokes))
-})
-app.get("/facts", (req, res) => {
-    res.send (randomize(facts))
+app.get("/fortune", (req, res) => {
+    const fortuneNumber = Math.floor(Math.random() * 5)
+    res.send(fortunes[fortuneNumber])
 })
 
-app.listen(3000, () => { })
+app.get("/joke", (req, res) => {
+    const jokeNumber = Math.floor(Math.random() * 3)
+    res.send(jokes[jokeNumber])
+})
+
+app.get("/fact", (req, res) => {
+    const factNumber = Math.floor(Math.random() * 3)
+    res.send(facts[factNumber])
+})
+
+app.listen(3000, () => { console.log("listening on port number 3000"); })
